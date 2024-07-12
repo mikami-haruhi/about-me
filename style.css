@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;400;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+body {
+    background-color: #e7e7e7;
+}
+.header {
+    width: 100%;
+    height: 100vh;
+}
+nav {
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #333333;
+    z-index: 1000;
+}
+.logo {
+    width: 150px;
+    margin: 0 auto;
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: 450;
+    color: white;
+    font-family: "Impact", sans-serif;
+}
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    float: right;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+}
+.menu-icon div {
+    width: 35px;
+    height: 5px;
+    background-color: white;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+nav ul {
+    background: #333333;
+    width: 100%;
+    margin-top: 10px;
+}
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 20px 30px;
+}
+nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+.text {
+    padding: 20px 10%;
+}
+nav.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #333333;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 3%;
+    max-height: 15%;
+    transition: all 0.6s;
+}
+nav.sticky .logo {
+    margin: 20px 0;
+}
+nav.sticky ul {
+    background: transparent;
+    font-size: 1.3rem;
+}
+.cover-home {
+    width: 100%;
+    background-image: url("sky-2337111_1280.jpg");
+    background-color: rgba(255, 255, 255, 0.3);
+    background-blend-mode: lighten;
+    background-position: center;
+    background-size: cover;
+}
+.page-title {
+    font-size: 6rem;
+    font-family: "Impact", sans-serif;
+    font-weight: bold;
+    color: #333333;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.copyright {
+    background-color: #333333;
+    text-align: center;
+    padding: 2rem;
+    color: #fff;
+}
+.top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0;
+    gap: 100px;
+}
+.box {
+    width: 80%;
+    max-width: 500px;
+    padding: 30px;
+    background: #333333;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.box.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.kuwasiku {
+    font-size: 3rem;
+    color: #333333;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.kuwasiku.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+@media (max-width: 768px) {
+    .logo {
+        font-size: 1.5rem;
+        margin: 0;
+    }
+    .menu-icon {
+        display: block;
+    }
+    .menu {
+        position: absolute;
+        z-index: 2;
+        top: 50px;
+        right: 0;
+        overflow: hidden;
+    }
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+    }
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+    nav ul li a {
+        font-size: 1.2rem;
+    }
+    .page-title {
+        font-size: 3rem;
+        padding: 0 1rem;
+    }
+    nav.active ul {
+        display: flex;
+    }
+    .box {
+        width: 90%;
+        margin: 20px 0;
+    }
+}
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.2rem;
+    }
+    .menu {
+        position: absolute;
+        z-index: 2;
+        top: 50px;
+        right: 0;
+        overflow: hidden;
+    }
+    nav ul li a {
+        font-size: 1rem;
+    }
+    .page-title {
+        font-size: 2rem;
+        padding: 0 1rem;
+    }
+}
+
+/* ========= contactだけで使うcss ========= */
+section {
+    text-align: center;
+}
+.container {
+    text-align: center;
+}
+.box {
+    max-width: 800px;
+    margin: 2% auto;
+    background: #333333;
+    padding: 3% 5%;
+    border-radius: 10px;
+}
+.form-col {
+    margin-bottom: 4%;
+}
+.form-col label {
+    display: block;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.form-col input,
+.form-col textarea {
+    width: 100%;
+    border-radius: 5px;
+    border: solid 1px #999999;
+}
+.form-col input {
+    width: 50%;
+}
+.form-btn {
+    text-align: center;
+}
+button {
+    background-color: #f78b26;
+    color: #ffffff;
+    width: 250px;
+    margin: 0 auto;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+button:hover {
+    background-color: #8D7B68;
+}
+@media screen and (max-width: 480px) {
+    .box {
+        margin: 5% auto;
+        padding: 7%;
+    }
+    .form-col {
+        margin-bottom: 5%;
+    }
+    .form-col input {
+        width: 70%;
+    }
+}

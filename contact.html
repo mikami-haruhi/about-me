@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>About Me - Contact</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="cover-home">
+    <div class="header">
+      <nav class="navbar">
+        <h2 class="logo">About Me</h2>
+        <div class="menu-icon"oniclick="toggleMenu()">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+        <ul class="menu">
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="about.html">自己紹介</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+            <h2 class="page-title">CONTACT</h2>
+        </div>
+    </div>
+    
+    <div class="container">
+        
+        <div class="box fead-in">
+            <form action="#">
+                <div class="form-col">
+                    <label for="yourName" class="form-label">お名前</label>
+                    <input type="text" name="お名前" id="yourName">
+                </div>
+                <div class="form-col">
+                    <label for="yourEmail" class="form-label">E-Mail</label>
+                    <input type="email" name="E-Mail" id="yourEmail">
+                </div>
+                <div class="form-col">
+                    <label for="yourInquiry" class="form-label">お問い合わせ内容</label>
+                    <textarea name="お問い合わせ内容" id="yourInquiry" cols="30" rows="10"></textarea>
+                </div>
+                <div class="form-btn">
+                    <button type="submit" onclick="buttonClick()">送信する</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="copyright">
+        <small>&copy;2024 About Me</small>
+    </div>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
