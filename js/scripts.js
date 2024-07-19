@@ -1,35 +1,38 @@
-// メニューのトグル
 function toggleMenu() {
-}
-
-document.addEventListener("click", function() {
     var nav = document.querySelector("nav");
     nav.classList.toggle("active");
+}
 
-});
-
-// ナビゲーションバーの固定
-const menu = document.querySelector(".menu");
+const menuIcon = document.querySelector(".menu-icon");
 const navbar = document.querySelector(".navbar");
-var nav = document.querySelector("nav");
-window.addEventListener("scroll", () => {
-    if (window.pageYOffset >= menu.offsetTop) {
-        navbar.classList.add("sticky");
-        nav.classList.add("sticky")
-    } else {
-        navbar.classList.remove("sticky");
+
+function handleScroll() {
+    if (window.innerWidth > 768) { // デスクトップ版
+        if (window.pageYOffset >= navbar.offsetTop) {
+            navbar.classList.add("sticky");
+        } else {
+            navbar.classList.remove("sticky");
+        }
     }
-});
+}
+
+// イベントリスナーを設定
+menuIcon.addEventListener("click", toggleMenu);
+window.addEventListener("scroll", handleScroll);
+
+document.add
+
+
+window.addEventListener("scroll", handleScroll);
 
 document.addEventListener("DOMContentLoaded", function() {
     const boxes = document.querySelectorAll('.box');
-    const kuwasiku = document.querySelector('.kuwasiku');
 
-    const showElements = () => {
-        // box要素の表示
+    const showBoxes = () => {
         boxes.forEach(box => {
             const boxTop = box.getBoundingClientRect().top;
             const triggerPoint = window.innerHeight - 100;
+
             if (boxTop < triggerPoint) {
                 box.classList.add('show');
             } else {
@@ -38,8 +41,26 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     };
 
-    window.addEventListener('scroll', showElements);
+    window.addEventListener('scroll', showBoxes);
+
     // ページ読み込み時にも実行
-    showElements();
+    showBoxes();
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    function resizeTwitterTimeline() {
+        var twitterTimeline = document.querySelector('.twitter-timeline');
+        if (window.innerWidth <= 480) {
+            twitterTimeline.setAttribute('data-height', '300');
+        } else if (window.innerWidth <= 768) {
+            twitterTimeline.setAttribute('data-height', '400');
+        } else {
+            twitterTimeline.setAttribute('data-height', '520');
+        }
+    }
+    
+    resizeTwitterTimeline();
+    window.addEventListener('resize', resizeTwitterTimeline);
+});
+
 

@@ -80,7 +80,6 @@ nav.sticky .logo {
     margin: 20px 0;
 }
 nav.sticky ul {
-    background: transparent;
     font-size: 1.3rem;
 }
 .cover-home {
@@ -106,6 +105,8 @@ nav.sticky ul {
     text-align: center;
     padding: 2rem;
     color: #fff;
+    width: 100%;
+    bottom: 0;
 }
 .top {
     display: flex;
@@ -131,17 +132,70 @@ nav.sticky ul {
     opacity: 1;
     transform: translateY(0);
 }
-.kuwasiku {
-    font-size: 3rem;
-    color: #333333;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+/*ここからボダン*/
+.image-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* 画像ボタンを横並びにする */
 }
-.kuwasiku.show {
-    opacity: 1;
-    transform: translateY(0);
+ 
+.button {
+    text-align: center;
+    width: 268px;
 }
+ 
+.button a img {
+    display: block;
+    width: 100%;
+    height: 268px;
+    border: none;
+    transition: transform 0.3s ease;
+}
+ 
+.button a img:hover {
+    transform: scale(1.05);
+}
+ 
+.button p {
+    margin-top: 10px;
+    font-size: 30px;
+    color: #333;
+    font-family: "Impact", sans-serif; /* フォントをImpactに設定 */
+}
+
+ 
+/* SNSセクションのスタイル */
+.sns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.sns-item {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* h3.heading-medium.font-englishのスタイル */
+.heading-medium {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+
 @media (max-width: 768px) {
     .logo {
         font-size: 1.5rem;
@@ -177,10 +231,50 @@ nav.sticky ul {
     nav.active ul {
         display: flex;
     }
+
+    nav.active{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #333333;
+    }
     .box {
         width: 90%;
         margin: 20px 0;
     }
+    /*ここからボタン*/
+    .image-buttons {
+        flex-direction: column; /* 縦並びにする */
+        align-items: center;
+    }
+ 
+    .button {
+        width: 90%; /* モバイル版でボタンを大きくする */
+    }
+ 
+    .button a img {
+        width: 100%; /* 画像の幅を親要素に合わせる */
+        height: auto; /* 高さを自動調整 */
+    }
+ 
+    .button p{
+        font-size: 50px;
+    }
+
+    .sns-item {
+        width: 90%;
+    }
+
+    .heading-medium {
+        font-size: 1.5rem;
+    }
+
+    .sns-item .twitter-timeline {
+        width: 100% !important;
+        height: 400px !important;
+    }
+ 
 }
 @media (max-width: 480px) {
     .logo {
@@ -199,6 +293,19 @@ nav.sticky ul {
     .page-title {
         font-size: 2rem;
         padding: 0 1rem;
+    }
+    /*ここからボタン*/
+    .button p{
+        font-size: 50px;
+    }
+
+    .heading-medium {
+        font-size: 1.2rem;
+    }
+
+    .sns-item .twitter-timeline {
+        width: 100% !important;
+        height: 300px !important;
     }
 }
 
@@ -250,15 +357,4 @@ button {
 button:hover {
     background-color: #8D7B68;
 }
-@media screen and (max-width: 480px) {
-    .box {
-        margin: 5% auto;
-        padding: 7%;
-    }
-    .form-col {
-        margin-bottom: 5%;
-    }
-    .form-col input {
-        width: 70%;
-    }
-}
+
