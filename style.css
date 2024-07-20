@@ -140,9 +140,26 @@ nav.sticky ul {
     flex-wrap: wrap; /* 画像ボタンを横並びにする */
 }
  
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .button {
-    text-align: center;
-    width: 268px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.button.show {
+    opacity: 1;
+    transform: translateY(0);
 }
  
 .button a img {
@@ -161,39 +178,56 @@ nav.sticky ul {
     margin-top: 10px;
     font-size: 30px;
     color: #333;
-    font-family: "Impact", sans-serif; /* フォントをImpactに設定 */
-}
-
- 
-/* SNSセクションのスタイル */
-.sns {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: #f0f0f0;
-    border-radius: 10px;
-    margin: 20px 0;
-}
-
-.sns-item {
-    width: 100%;
-    max-width: 600px;
-    margin-bottom: 20px;
+    font-family: "Impact", sans-serif;
     text-align: center;
 }
 
-/* h3.heading-medium.font-englishのスタイル */
-.heading-medium {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: #333;
+.sns {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .sns-item {
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    margin-bottom: 40px;
+    width: 100%;
+  }
+  
+  .sns-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  .heading-medium {
+    font-size: 28px;
+    text-align: center;
+    padding: 20px 0;
+    background-color: #4a4a4a;
+    color: #ffffff;
+    margin: 0;
+  }
+  
+  .font-english {
     font-family: 'Arial', sans-serif;
-    border-bottom: 2px solid #333;
-    padding-bottom: 5px;
-    text-transform: uppercase;
-}
+    letter-spacing: 1px;
+  }
+  
+  .twitter-timeline {
+    width: 100% !important;
+    height: 600px !important;
+  }
+  
+  iframe {
+    width: 100%;
+    height: 450px;
+    border: none;
+  }
 
 
 @media (max-width: 768px) {
@@ -262,20 +296,21 @@ nav.sticky ul {
         font-size: 50px;
     }
 
-    .sns-item {
-        width: 90%;
-    }
-
     .heading-medium {
-        font-size: 1.5rem;
-    }
-
-    .sns-item .twitter-timeline {
-        width: 100% !important;
-        height: 400px !important;
-    }
+        font-size: 24px;
+        padding: 15px 0;
+      }
+      
+      .twitter-timeline {
+        height: 500px !important;
+      }
+      
+      iframe {
+        height: 350px;
+      }
  
 }
+
 @media (max-width: 480px) {
     .logo {
         font-size: 1.2rem;
@@ -298,18 +333,29 @@ nav.sticky ul {
     .button p{
         font-size: 50px;
     }
-
-    .heading-medium {
-        font-size: 1.2rem;
-    }
-
-    .sns-item .twitter-timeline {
-        width: 100% !important;
-        height: 300px !important;
-    }
+    .sns {
+        padding: 10px;
+      }
+      
+      .sns-item {
+        margin-bottom: 20px;
+      }
+      
+      .heading-medium {
+        font-size: 20px;
+        padding: 10px 0;
+      }
+      
+      .twitter-timeline {
+        height: 400px !important;
+      }
+      
+      iframe {
+        height: 250px;
+      }
 }
 
-/* ========= contactだけで使うcss ========= */
+/* contact*/
 section {
     text-align: center;
 }

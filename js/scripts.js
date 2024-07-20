@@ -63,4 +63,22 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener('resize', resizeTwitterTimeline);
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    const buttons = document.querySelectorAll('.button');
+
+    function checkPosition() {
+        buttons.forEach((button, index) => {
+            const rect = button.getBoundingClientRect();
+            if (rect.top < window.innerHeight) {
+                setTimeout(() => {
+                    button.classList.add('show');
+                }, index * 200); // 各ボタンの表示を0.2秒ずつ遅らせる
+            }
+        });
+    }
+
+    window.addEventListener('scroll', checkPosition);
+    window.addEventListener('resize', checkPosition);
+    checkPosition(); // 初期表示時にもチェック
+});
 
