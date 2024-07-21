@@ -47,21 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
     showBoxes();
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-    function resizeTwitterTimeline() {
-        var twitterTimeline = document.querySelector('.twitter-timeline');
-        if (window.innerWidth <= 480) {
-            twitterTimeline.setAttribute('data-height', '300');
-        } else if (window.innerWidth <= 768) {
-            twitterTimeline.setAttribute('data-height', '400');
-        } else {
-            twitterTimeline.setAttribute('data-height', '520');
-        }
-    }
-    
-    resizeTwitterTimeline();
-    window.addEventListener('resize', resizeTwitterTimeline);
-});
+
 
 document.addEventListener("DOMContentLoaded", function() {
     const buttons = document.querySelectorAll('.button');
@@ -82,3 +68,49 @@ document.addEventListener("DOMContentLoaded", function() {
     checkPosition(); // 初期表示時にもチェック
 });
 
+function toggleMenu() {
+    var nav = document.querySelector("nav");
+    nav.classList.toggle("active");
+}
+
+window.addEventListener('scroll', function() {
+    var div = document.querySelector('.header');
+    div.classList.toggle('sticky', window.scrollY > 0);
+});
+
+// スムーズスクロール
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// ページ読み込み時にURLのハッシュに対応する要素までスクロール
+window.addEventListener('load', () => {
+    if (window.location.hash) {
+        const element = document.querySelector(window.location.hash);
+        if (element) {
+            setTimeout(() => {
+                element.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }, 100);
+        }
+    }
+});
+
+function toggleMenu() {
+    var nav = document.querySelector("nav");
+    nav.classList.toggle("active");
+    
+    // メニューが開いているときはスクロールを無効にする
+    if (nav.classList.contains("active")) {
+        document.body.style.overflow = "hidden";
+    } else {
+        document.body.style.overflow = "";
+    }
+}

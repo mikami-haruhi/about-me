@@ -182,52 +182,81 @@ nav.sticky ul {
     text-align: center;
 }
 
-.sns {
+
+
+.section {
+    padding: 80px 0;  /* 上下のパディングを増やす */
+    margin-bottom: 60px;  /* 下マージンを追加 */
+}
+
+/* ページ内リンクのオフセット */
+html {
+    scroll-padding-top: 80px; /* ヘッダーの高さに応じて調整 */
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+
+.gallery {
     display: flex;
-    flex-direction: column;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .sns-item {
-    background-color: #f8f8f8;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.gallery img {
+    width: 32%;
+    margin-bottom: 2%;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
     transition: transform 0.3s ease;
-    margin-bottom: 40px;
-    width: 100%;
-  }
-  
-  .sns-item:hover {
-    transform: translateY(-5px);
-  }
-  
-  .heading-medium {
-    font-size: 28px;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+.twitter-embed {
+    margin-bottom: 30px;
+}
+
+.youtube-embed {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.youtube-embed iframe {
+    width: 32%;
+    height: 315px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 「About ページに戻る」ボタンのスタイル */
+.back-to-about {
     text-align: center;
-    padding: 20px 0;
-    background-color: #4a4a4a;
+    padding: 40px 0;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #f78b26;  /* 既存のボタン色に合わせて */
     color: #ffffff;
-    margin: 0;
-  }
-  
-  .font-english {
-    font-family: 'Arial', sans-serif;
-    letter-spacing: 1px;
-  }
-  
-  .twitter-timeline {
-    width: 100% !important;
-    height: 600px !important;
-  }
-  
-  iframe {
-    width: 100%;
-    height: 450px;
-    border: none;
-  }
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.back-button:hover {
+    background-color: #8D7B68;
+}
 
 
 @media (max-width: 768px) {
@@ -296,18 +325,24 @@ nav.sticky ul {
         font-size: 50px;
     }
 
-    .heading-medium {
-        font-size: 24px;
-        padding: 15px 0;
-      }
-      
-      .twitter-timeline {
-        height: 500px !important;
-      }
-      
-      iframe {
-        height: 350px;
-      }
+
+      .gallery img {
+        width: 48%;
+    }
+
+    .youtube-embed iframe {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .section {
+        padding: 60px 0;
+        margin-bottom: 40px;
+    }
+
+    .back-to-about {
+        padding: 30px 0;
+    }
  
 }
 
@@ -333,26 +368,58 @@ nav.sticky ul {
     .button p{
         font-size: 50px;
     }
-    .sns {
-        padding: 10px;
-      }
-      
-      .sns-item {
-        margin-bottom: 20px;
-      }
-      
-      .heading-medium {
-        font-size: 20px;
-        padding: 10px 0;
-      }
-      
-      .twitter-timeline {
-        height: 400px !important;
-      }
-      
       iframe {
         height: 250px;
       }
+      .gallery img {
+        width: 100%;
+    }
+
+    .youtube-embed {
+        flex-direction: column;
+    }
+
+    .youtube-embed iframe {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .section {
+        padding: 40px 0;
+        margin-bottom: 30px;
+    }
+
+    .back-to-about {
+        padding: 20px 0;
+    }
+}
+
+@media (max-height: 450px) {
+    nav {
+        position: absolute;  /* fixed から absolute に変更 */
+    }
+
+    nav ul {
+        max-height: calc(100vh - 60px);  /* ビューポートの高さから header の高さを引いた値 */
+        overflow-y: auto;  /* スクロール可能にする */
+    }
+
+    nav ul li {
+        margin: 10px 0;  /* マージンを小さくする */
+    }
+
+    .menu-icon {
+        top: 10px;  /* 位置を少し上に調整 */
+    }
+
+    .logo {
+        font-size: 1.2rem;  /* ロゴのサイズを小さくする */
+    }
+
+    .page-title {
+        font-size: 2rem;  /* タイトルのサイズを小さくする */
+        top: 60%;  /* 位置を少し下に調整 */
+    }
 }
 
 /* contact*/
