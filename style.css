@@ -63,6 +63,18 @@ nav ul li a {
 .text {
     padding: 20px 10%;
 }
+nav {
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #333333;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
 nav.sticky {
     position: fixed;
     top: 0;
@@ -77,11 +89,12 @@ nav.sticky {
     transition: all 0.6s;
 }
 nav.sticky .logo {
-    margin: 20px 0;
+    font-size: 1.5rem;
 }
 nav.sticky ul {
     font-size: 1.3rem;
 }
+
 .cover-home {
     width: 100%;
     background-image: url("sky-2337111_1280.jpg");
@@ -183,60 +196,80 @@ nav.sticky ul {
 }
 
 
+html {
+    scroll-padding-top: 100px; /* この値は、固定ヘッダーの高さに応じて調整してください */
+  }
 
 .section {
-    padding: 80px 0;  /* 上下のパディングを増やす */
-    margin-bottom: 60px;  /* 下マージンを追加 */
-}
-
-/* ページ内リンクのオフセット */
-html {
-    scroll-padding-top: 80px; /* ヘッダーの高さに応じて調整 */
+    margin-top: 100px;  /* セクション全体の上部に余白を追加 */
+    margin-bottom: 100px;
+    scroll-margin-top: 100px;
+    
 }
 
 .section-title {
-    font-size: 2.5rem;
     text-align: center;
-    margin-bottom: 30px;
-    color: #333;
+    color: #2c3e50;
+    font-size: 2.5em;
+    margin-top: 0;  /* 上の余白をリセット */
+    margin-bottom: 30px;  /* 下の余白を維持 */
+    padding-top: 20px;  /* タイトル自体の上に内部余白を追加 */
 }
 
-
+/* ギャラリーセクション */
 .gallery {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  /* 最小幅を300pxに */
+    gap: 30px;  /* 画像間の隙間を広げる */
 }
 
 .gallery img {
-    width: 32%;
-    margin-bottom: 2%;
+    width: 100%;
+    height: 300px;  /* 高さを固定して統一感を出す */
+    object-fit: cover;  /* 画像比率を保持しつつ、領域を埋める */
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);  /* シャドウを追加 */
 }
 
 .gallery img:hover {
     transform: scale(1.05);
 }
 
-.twitter-embed {
-    margin-bottom: 30px;
+/* SNSセクション */
+.twitter-embed, .youtube-embed {
+    margin-bottom: 50px;
 }
 
-.youtube-embed {
+.twitter-embed h3, .youtube-embed h3 {
+    color: #3498db;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.twitter-timeline {
+    width: 100% !important;
+    height: 700px !important;  /* 高さを増やす */
+}
+
+.youtube-videos {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    gap: 30px;
 }
 
-.youtube-embed iframe {
-    width: 32%;
-    height: 315px;
+.youtube-video {
+    flex: 1;
+    min-width: 400px;  /* 最小幅を広げる */
+}
+
+.youtube-video iframe {
+    width: 100%;
+    height: 300px;  /* 高さを増やす */
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
-
 /* 「About ページに戻る」ボタンのスタイル */
 .back-to-about {
     text-align: center;
@@ -259,6 +292,18 @@ html {
 }
 
 
+
+
+@media (max-width: 992px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    .youtube-video {
+        min-width: 300px;
+    }
+}
+
 @media (max-width: 768px) {
     .logo {
         font-size: 1.5rem;
@@ -267,6 +312,7 @@ html {
     .menu-icon {
         display: block;
     }
+    
     .menu {
         position: absolute;
         z-index: 2;
@@ -326,25 +372,38 @@ html {
     }
 
 
-      .gallery img {
-        width: 48%;
-    }
-
-    .youtube-embed iframe {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .section {
-        padding: 60px 0;
-        margin-bottom: 40px;
-    }
-
-    .back-to-about {
-        padding: 30px 0;
+    .gallery img {
+        height: 250px;
     }
  
+
+    .youtube-videos {
+        flex-direction: column;
+    }
+    
+    .youtube-video {
+        width: 100%;
+    }
+
+    .youtube-video iframe {
+        height: 350px;
+    }
+
+    .twitter-timeline {
+        height: 600px !important;
+    }
+    html {
+        scroll-padding-top: 100px; /* この値は、固定ヘッダーの高さに応じて調整してください */
+      }
+      
+      .section {
+        scroll-margin-top: 100px; /* この値も、固定ヘッダーの高さに応じて調整してください */
+      }
+
 }
+
+ 
+
 
 @media (max-width: 480px) {
     .logo {
@@ -368,29 +427,16 @@ html {
     .button p{
         font-size: 50px;
     }
-      iframe {
+    .gallery img {
+        height: 200px;
+    }
+
+    .youtube-video iframe {
         height: 250px;
-      }
-      .gallery img {
-        width: 100%;
     }
 
-    .youtube-embed {
-        flex-direction: column;
-    }
-
-    .youtube-embed iframe {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .section {
-        padding: 40px 0;
-        margin-bottom: 30px;
-    }
-
-    .back-to-about {
-        padding: 20px 0;
+    .twitter-timeline {
+        height: 500px !important;
     }
 }
 

@@ -1,34 +1,68 @@
-function toggleMenu() {
-    var nav = document.querySelector("nav");
-    nav.classList.toggle("active");
-}
+document.addEventListener('DOMContentLoaded', function() {
+    const nav = document.querySelector('nav');
+    const navLinks = document.querySelectorAll('.menu a[href^="#"]');
+    const menuIcon = document.querySelector(".menu-icon");
+    
+    function getHeaderHeight() {
+        return nav.offsetHeight;
+    }
 
-const menuIcon = document.querySelector(".menu-icon");
-const navbar = document.querySelector(".navbar");
-
-function handleScroll() {
-    if (window.innerWidth > 768) { // デスクトップ版
-        if (window.pageYOffset >= navbar.offsetTop) {
-            navbar.classList.add("sticky");
-        } else {
-            navbar.classList.remove("sticky");
+    function adjustScrollPosition(targetId) {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            const headerHeight = getHeaderHeight();
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+            
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
         }
     }
-}
 
-// イベントリスナーを設定
-menuIcon.addEventListener("click", toggleMenu);
-window.addEventListener("scroll", handleScroll);
+    function closeMenu() {
+        nav.classList.remove('active');
+    }
 
-document.add
+    function handleScroll() {
+        if (window.innerWidth > 768) {
+            if (window.pageYOffset > 50) {
+                nav.classList.add('sticky');
+            } else {
+                nav.classList.remove('sticky');
+            }
+        } else {
+            nav.classList.remove('sticky');
+        }
+    }
 
+    navLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            adjustScrollPosition(targetId);
+            closeMenu();
+        });
+    });
 
-window.addEventListener("scroll", handleScroll);
+    menuIcon.addEventListener('click', function() {
+        nav.classList.toggle('active');
+    });
 
-document.addEventListener("DOMContentLoaded", function() {
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            closeMenu();
+        }
+    });
+
+    window.addEventListener('scroll', handleScroll);
+
+    // 既存の機能を保持
     const boxes = document.querySelectorAll('.box');
+    const buttons = document.querySelectorAll('.button');
 
-    const showBoxes = () => {
+    function showBoxes() {
         boxes.forEach(box => {
             const boxTop = box.getBoundingClientRect().top;
             const triggerPoint = window.innerHeight - 100;
@@ -39,78 +73,26 @@ document.addEventListener("DOMContentLoaded", function() {
                 box.classList.remove('show');
             }
         });
-    };
+    }
 
-    window.addEventListener('scroll', showBoxes);
-
-    // ページ読み込み時にも実行
-    showBoxes();
-});
-
-
-
-document.addEventListener("DOMContentLoaded", function() {
-    const buttons = document.querySelectorAll('.button');
-
-    function checkPosition() {
+    function checkButtonPosition() {
         buttons.forEach((button, index) => {
             const rect = button.getBoundingClientRect();
             if (rect.top < window.innerHeight) {
                 setTimeout(() => {
                     button.classList.add('show');
-                }, index * 200); // 各ボタンの表示を0.2秒ずつ遅らせる
+                }, index * 200);
             }
         });
     }
 
-    window.addEventListener('scroll', checkPosition);
-    window.addEventListener('resize', checkPosition);
-    checkPosition(); // 初期表示時にもチェック
-});
-
-function toggleMenu() {
-    var nav = document.querySelector("nav");
-    nav.classList.toggle("active");
-}
-
-window.addEventListener('scroll', function() {
-    var div = document.querySelector('.header');
-    div.classList.toggle('sticky', window.scrollY > 0);
-});
-
-// スムーズスクロール
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+    window.addEventListener('scroll', function() {
+        showBoxes();
+        checkButtonPosition();
     });
-});
 
-// ページ読み込み時にURLのハッシュに対応する要素までスクロール
-window.addEventListener('load', () => {
-    if (window.location.hash) {
-        const element = document.querySelector(window.location.hash);
-        if (element) {
-            setTimeout(() => {
-                element.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }, 100);
-        }
-    }
+    // 初期表示時にも実行
+    showBoxes();
+    checkButtonPosition();
+    handleScroll();
 });
-
-function toggleMenu() {
-    var nav = document.querySelector("nav");
-    nav.classList.toggle("active");
-    
-    // メニューが開いているときはスクロールを無効にする
-    if (nav.classList.contains("active")) {
-        document.body.style.overflow = "hidden";
-    } else {
-        document.body.style.overflow = "";
-    }
-}
