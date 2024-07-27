@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     const nav = document.querySelector('nav');
-    const navLinks = document.querySelectorAll('.menu a[href^="#"]');
+    const navLinks = document.querySelectorAll('.menu a');
     const menuIcon = document.querySelector(".menu-icon");
-    
+    const menu = document.querySelector('.menu');
+
     function getHeaderHeight() {
         return nav.offsetHeight;
     }
@@ -21,44 +22,35 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function closeMenu() {
-        nav.classList.remove('active');
+    function toggleMenu() {
+        menu.classList.toggle('open');
     }
 
-    function handleScroll() {
-        if (window.innerWidth > 768) {
-            if (window.pageYOffset > 50) {
-                nav.classList.add('sticky');
-            } else {
-                nav.classList.remove('sticky');
-            }
-        } else {
-            nav.classList.remove('sticky');
-        }
+    function closeMenu() {
+        menu.classList.remove('open');
     }
 
     navLinks.forEach(function(link) {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            adjustScrollPosition(targetId);
+            if (this.getAttribute('href').startsWith('#')) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                adjustScrollPosition(targetId);
+            }
             closeMenu();
         });
     });
 
-    menuIcon.addEventListener('click', function() {
-        nav.classList.toggle('active');
-    });
+    menuIcon.addEventListener('click', toggleMenu);
 
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-            closeMenu();
-        }
-    });
+    // 以下の箇所は削除しました
+    // window.addEventListener('resize', function() {
+    //     if (window.innerWidth > 768) {
+    //         closeMenu();
+    //     }
+    // });
 
-    window.addEventListener('scroll', handleScroll);
-
-    // 既存の機能を保持
+    // ボックスとボタンのアニメーション（既存の機能を保持）
     const boxes = document.querySelectorAll('.box');
     const buttons = document.querySelectorAll('.button');
 
@@ -94,5 +86,4 @@ document.addEventListener('DOMContentLoaded', function() {
     // 初期表示時にも実行
     showBoxes();
     checkButtonPosition();
-    handleScroll();
 });

@@ -12,6 +12,7 @@ body {
     width: 100%;
     height: 100vh;
 }
+/* ナビゲーションの基本スタイル */
 nav {
     width: 100%;
     padding: 20px 0;
@@ -22,6 +23,7 @@ nav {
     background: #333333;
     z-index: 1000;
 }
+
 .logo {
     width: 150px;
     margin: 0 auto;
@@ -31,14 +33,17 @@ nav {
     color: white;
     font-family: "Impact", sans-serif;
 }
+
+/* メニューアイコンのスタイル */
 .menu-icon {
-    display: none;
+    display: block;
     cursor: pointer;
-    float: right;
-    position: absolute;
+    position: fixed; /* 固定位置に変更 */
     top: 12px;
     right: 12px;
+    z-index: 1001; /* メニューより上に表示 */
 }
+
 .menu-icon div {
     width: 35px;
     height: 5px;
@@ -46,55 +51,44 @@ nav {
     margin: 6px 0;
     transition: 0.4s;
 }
-nav ul {
-    background: #333333;
+
+/* メニューのスタイル */
+.menu {
+    background: rgba(51, 51, 51, 0.9);
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100%;
     width: 100%;
-    margin-top: 10px;
+    padding-top: 60px;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-nav ul li {
-    display: inline-block;
+
+.menu.open {
+    right: 0;
+}
+
+nav ul {
     list-style: none;
-    margin: 20px 30px;
+    padding: 0;
+    margin: 0;
+    text-align: center;
 }
+
+nav ul li {
+    margin: 20px 0;
+}
+
 nav ul li a {
     text-decoration: none;
     color: white;
+    font-size: 1.2rem;
+    display: block;
+    padding: 10px 20px;
 }
-.text {
-    padding: 20px 10%;
-}
-nav {
-    width: 100%;
-    padding: 20px 0;
-    text-align: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: #333333;
-    z-index: 1000;
-    transition: all 0.3s ease;
-}
-
-nav.sticky {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: #333333;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px 3%;
-    max-height: 15%;
-    transition: all 0.6s;
-}
-nav.sticky .logo {
-    font-size: 1.5rem;
-}
-nav.sticky ul {
-    font-size: 1.3rem;
-}
-
 .cover-home {
     width: 100%;
     background-image: url("sky-2337111_1280.jpg");
@@ -120,7 +114,9 @@ nav.sticky ul {
     color: #fff;
     width: 100%;
     bottom: 0;
+    margin-top: auto;
 }
+
 .top {
     display: flex;
     flex-direction: column;
@@ -304,50 +300,9 @@ html {
     }
 }
 
-@media (max-width: 768px) {
-    .logo {
-        font-size: 1.5rem;
-        margin: 0;
-    }
-    .menu-icon {
-        display: block;
-    }
-    
-    .menu {
-        position: absolute;
-        z-index: 2;
-        top: 50px;
-        right: 0;
-        overflow: hidden;
-    }
-    nav ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        padding: 0;
-    }
-    nav ul li {
-        display: block;
-        margin: 10px 0;
-    }
-    nav ul li a {
-        font-size: 1.2rem;
-    }
-    .page-title {
-        font-size: 3rem;
-        padding: 0 1rem;
-    }
-    nav.active ul {
-        display: flex;
-    }
 
-    nav.active{
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background: #333333;
-    }
+@media (max-width: 768px) {
+
     .box {
         width: 90%;
         margin: 20px 0;
@@ -406,23 +361,8 @@ html {
 
 
 @media (max-width: 480px) {
-    .logo {
-        font-size: 1.2rem;
-    }
-    .menu {
-        position: absolute;
-        z-index: 2;
-        top: 50px;
-        right: 0;
-        overflow: hidden;
-    }
-    nav ul li a {
-        font-size: 1rem;
-    }
-    .page-title {
-        font-size: 2rem;
-        padding: 0 1rem;
-    }
+
+
     /*ここからボタン*/
     .button p{
         font-size: 50px;
@@ -440,33 +380,6 @@ html {
     }
 }
 
-@media (max-height: 450px) {
-    nav {
-        position: absolute;  /* fixed から absolute に変更 */
-    }
-
-    nav ul {
-        max-height: calc(100vh - 60px);  /* ビューポートの高さから header の高さを引いた値 */
-        overflow-y: auto;  /* スクロール可能にする */
-    }
-
-    nav ul li {
-        margin: 10px 0;  /* マージンを小さくする */
-    }
-
-    .menu-icon {
-        top: 10px;  /* 位置を少し上に調整 */
-    }
-
-    .logo {
-        font-size: 1.2rem;  /* ロゴのサイズを小さくする */
-    }
-
-    .page-title {
-        font-size: 2rem;  /* タイトルのサイズを小さくする */
-        top: 60%;  /* 位置を少し下に調整 */
-    }
-}
 
 /* contact*/
 section {
