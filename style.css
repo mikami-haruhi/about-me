@@ -117,6 +117,7 @@ nav ul li a {
     margin-top: auto;
 }
 
+
 .top {
     display: flex;
     flex-direction: column;
@@ -194,13 +195,12 @@ nav ul li a {
 
 html {
     scroll-padding-top: 100px; /* この値は、固定ヘッダーの高さに応じて調整してください */
-  }
+}
 
 .section {
     margin-top: 100px;  /* セクション全体の上部に余白を追加 */
     margin-bottom: 100px;
     scroll-margin-top: 100px;
-    
 }
 
 .section-title {
@@ -212,24 +212,36 @@ html {
     padding-top: 20px;  /* タイトル自体の上に内部余白を追加 */
 }
 
-/* ギャラリーセクション */
+
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  /* 最小幅を300pxに */
-    gap: 30px;  /* 画像間の隙間を広げる */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
 }
 
 .gallery img {
     width: 100%;
-    height: 300px;  /* 高さを固定して統一感を出す */
-    object-fit: cover;  /* 画像比率を保持しつつ、領域を埋める */
+    height: 300px;
+    object-fit: cover;
     border-radius: 10px;
     transition: transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);  /* シャドウを追加 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.gallery img:hover {
-    transform: scale(1.05);
+.gallery img.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.description {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #333;
 }
 
 /* SNSセクション */
@@ -245,7 +257,15 @@ html {
 
 .twitter-timeline {
     width: 100% !important;
-    height: 700px !important;  /* 高さを増やす */
+    height: 700px !important;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.twitter-embed.show .twitter-timeline {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .youtube-videos {
@@ -257,15 +277,29 @@ html {
 
 .youtube-video {
     flex: 1;
-    min-width: 400px;  /* 最小幅を広げる */
+    min-width: 400px;
 }
 
 .youtube-video iframe {
     width: 100%;
-    height: 300px;  /* 高さを増やす */
+    height: 300px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    /* アニメーションスタイルを削除 */
 }
+
+/* アニメーションスタイル */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-up.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* 「About ページに戻る」ボタンのスタイル */
 .back-to-about {
     text-align: center;
@@ -286,7 +320,6 @@ html {
 .back-button:hover {
     background-color: #8D7B68;
 }
-
 
 
 

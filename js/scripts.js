@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const headerHeight = getHeaderHeight();
             const elementPosition = targetElement.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-            
+
             window.scrollTo({
                 top: offsetPosition,
                 behavior: 'smooth'
@@ -43,47 +43,68 @@ document.addEventListener('DOMContentLoaded', function() {
 
     menuIcon.addEventListener('click', toggleMenu);
 
-    // 以下の箇所は削除しました
-    // window.addEventListener('resize', function() {
-    //     if (window.innerWidth > 768) {
-    //         closeMenu();
-    //     }
-    // });
-
-    // ボックスとボタンのアニメーション（既存の機能を保持）
     const boxes = document.querySelectorAll('.box');
     const buttons = document.querySelectorAll('.button');
+    const galleryImages = document.querySelectorAll('.gallery img');
+    const youtubeIframes = document.querySelectorAll('.youtube-video iframe');
+    const twitterEmbed = document.querySelector('.twitter-embed');
 
-    function showBoxes() {
-        boxes.forEach(box => {
-            const boxTop = box.getBoundingClientRect().top;
+    function showElements(elements) {
+        elements.forEach((element, index) => {
+            const elementTop = element.getBoundingClientRect().top;
             const triggerPoint = window.innerHeight - 100;
 
-            if (boxTop < triggerPoint) {
-                box.classList.add('show');
+            if (elementTop < triggerPoint) {
+                setTimeout(() => {
+                    element.classList.add('show');
+                }, index * 200); // Adjust the delay as needed
             } else {
-                box.classList.remove('show');
+                element.classList.remove('show');
             }
         });
     }
 
+    function showBoxes() {
+        showElements(boxes);
+    }
+
     function checkButtonPosition() {
-        buttons.forEach((button, index) => {
-            const rect = button.getBoundingClientRect();
-            if (rect.top < window.innerHeight) {
-                setTimeout(() => {
-                    button.classList.add('show');
-                }, index * 200);
+        showElements(buttons);
+    }
+
+    function showGalleryImages() {
+        showElements(galleryImages);
+    }
+
+    function showYouTubeIframes() {
+        showElements(youtubeIframes);
+    }
+
+    function showTwitterEmbed() {
+        if (twitterEmbed) {
+            const elementTop = twitterEmbed.getBoundingClientRect().top;
+            const triggerPoint = window.innerHeight - 100;
+
+            if (elementTop < triggerPoint) {
+                twitterEmbed.classList.add('show');
+            } else {
+                twitterEmbed.classList.remove('show');
             }
-        });
+        }
     }
 
     window.addEventListener('scroll', function() {
         showBoxes();
         checkButtonPosition();
+        showGalleryImages();
+        showYouTubeIframes();
+        showTwitterEmbed();
     });
 
     // 初期表示時にも実行
     showBoxes();
     checkButtonPosition();
+    showGalleryImages();
+    showYouTubeIframes();
+    showTwitterEmbed();
 });
