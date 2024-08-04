@@ -306,7 +306,7 @@ html {
     padding: 40px 0;
 }
 
-.back-button {
+.back-button,.link-button  {
     display: inline-block;
     padding: 15px 30px;
     background-color: #f78b26;  /* 既存のボタン色に合わせて */
@@ -317,9 +317,33 @@ html {
     transition: 0.3s;
 }
 
-.back-button:hover {
+.back-button:hover,.link-button:hover {
     background-color: #8D7B68;
 }
+
+/* 「公式サイトへ行く」ボタンのスタイル */
+.go-to-official {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.official-button, .link-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #f78b26;  /* 既存のボタン色に合わせて */
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.official-button:hover, .link-button:hover {
+    background-color: #8D7B68;
+}
+
+
+
 
 
 
