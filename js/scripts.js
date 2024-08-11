@@ -120,30 +120,29 @@ document.addEventListener("DOMContentLoaded", function() {
     ];
 
     let currentIndex = 0;
+    let isFirstLoad = true;
 
     function changeBackgroundImage() {
-        // 次の画像のインデックスを計算
         const nextIndex = (currentIndex + 1) % images.length;
 
-        // 新しい画像をすぐにセットしてフェードインをスムーズに
-        const nextImage = new Image();
-        nextImage.src = images[nextIndex];
+        // フェードアウト
+        backgroundImage.classList.add("fade");
 
-        // 画像が読み込まれたらフェードアウトと画像切り替えを同時に実行
-        nextImage.onload = () => {
-            backgroundImage.classList.add("fade");
-
-            setTimeout(() => {
-                backgroundImage.style.backgroundImage = `url(${images[nextIndex]})`;
-                backgroundImage.classList.remove("fade");
-                currentIndex = nextIndex;
-            }, 2000); // フェードアウトと同じ時間(2秒)に設定
-        };
+        setTimeout(() => {
+            // 画像を切り替えてフェードイン
+            backgroundImage.style.backgroundImage = `url(${images[nextIndex]})`;
+            backgroundImage.classList.remove("fade");
+            currentIndex = nextIndex;
+        }, 2000); // フェードアウトと同じ2秒後に画像を切り替え
     }
 
     // 最初の画像設定
     backgroundImage.style.backgroundImage = `url(${images[currentIndex]})`;
 
-    // 5秒ごとに画像を変更（フェードイン・フェードアウトの2秒を考慮）
-    setInterval(changeBackgroundImage, 5000);
+    // 最初の切り替えは2秒後に1度だけ実行
+    setTimeout(() => {
+        changeBackgroundImage();
+        isFirstLoad = false; // 最初の切り替えが終わったフラグを立てる
+        setInterval(changeBackgroundImage, 5000); // その後、5秒ごとに定期的に画像を切り替える
+    }, 2000);
 });
