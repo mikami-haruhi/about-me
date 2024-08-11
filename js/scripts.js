@@ -108,3 +108,42 @@ document.addEventListener('DOMContentLoaded', function() {
     showYouTubeIframes();
     showTwitterEmbed();
 });
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const backgroundImage = document.querySelector(".background-image");
+    const images = [
+        "sky-2337111_1280.jpg",
+        "sunset-glow-679119_1280.jpg", // ここに追加する画像のURLを挿入
+        "air-2643070_1280.jpg", // 他の画像も追加可能
+        // 追加する画像をリストに入れていく
+    ];
+
+    let currentIndex = 0;
+
+    function changeBackgroundImage() {
+        // 次の画像のインデックスを計算
+        const nextIndex = (currentIndex + 1) % images.length;
+
+        // 新しい画像をすぐにセットしてフェードインをスムーズに
+        const nextImage = new Image();
+        nextImage.src = images[nextIndex];
+
+        // 画像が読み込まれたらフェードアウトと画像切り替えを同時に実行
+        nextImage.onload = () => {
+            backgroundImage.classList.add("fade");
+
+            setTimeout(() => {
+                backgroundImage.style.backgroundImage = `url(${images[nextIndex]})`;
+                backgroundImage.classList.remove("fade");
+                currentIndex = nextIndex;
+            }, 2000); // フェードアウトと同じ時間(2秒)に設定
+        };
+    }
+
+    // 最初の画像設定
+    backgroundImage.style.backgroundImage = `url(${images[currentIndex]})`;
+
+    // 5秒ごとに画像を変更（フェードイン・フェードアウトの2秒を考慮）
+    setInterval(changeBackgroundImage, 5000);
+});
