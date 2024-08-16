@@ -113,9 +113,9 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener("DOMContentLoaded", function() {
     const backgroundImage = document.querySelector(".background-image");
     const images = [
-        "sky-2337111_1280.jpg",
-        "sunset-glow-679119_1280.jpg", // ここに追加する画像のURLを挿入
-        "air-2643070_1280.jpg", // 他の画像も追加可能
+        "img/sky-2337111_1280.jpg",
+        "img/sunset-glow-679119_1280.jpg", // ここに追加する画像のURLを挿入
+        "img/air-2643070_1280.jpg", // 他の画像も追加可能
         // 追加する画像をリストに入れていく
     ];
 

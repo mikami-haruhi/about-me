@@ -289,11 +289,15 @@ html {
 }
 
 .youtube-videos {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 30px;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
 }
+
+.youtube-videos > * {
+	margin: 15px; /* 15px のマージンを設定して、上下左右に30pxのギャップを確保 */
+}
+
 
 .youtube-video {
     flex: 1;
