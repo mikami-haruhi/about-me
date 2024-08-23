@@ -267,6 +267,7 @@ html {
 /* SNSセクション */
 .twitter-embed, .youtube-embed {
     margin-bottom: 50px;
+    text-align: center; /* コンテナを中央寄せ */
 }
 
 .twitter-embed h3, .youtube-embed h3 {
@@ -277,10 +278,12 @@ html {
 
 .twitter-timeline {
     width: 100% !important;
+    max-width: 800px !important; /* 最大幅を設定 */
     height: 700px !important;
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    margin: 0 auto !important; /* タイムラインを中央寄せ */
 }
 
 .twitter-embed.show .twitter-timeline {
@@ -436,6 +439,13 @@ html {
         padding: 1.5rem;
         font-size: 14px;
     }
+    .twitter-timeline {
+        width: 100% !important;
+        max-width: 500px !important; /* 最大幅を設定 */
+        height: 700px !important;
+   
+    }
+    
   
     .youtube-embed {
         flex-direction: column;
