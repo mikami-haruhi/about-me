@@ -371,7 +371,20 @@ html {
 
 
 
-
+@media screen and (max-width: 1130px) and (min-width: 769px) {
+    .image-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .button {
+      width: 45%; /* 少し余裕を持たせるために45%に設定 */
+      max-width: 300px; /* 必要に応じて調整 */
+      margin: 10px;
+    }
+  }
 
 
 @media (max-width: 992px) {
