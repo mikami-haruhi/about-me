@@ -8,6 +8,8 @@
 body {
     background-color: #e7e7e7;
 }
+
+/*ヘッダー*/
 .header {
     width: 100%;
     height: 100vh;
@@ -25,6 +27,7 @@ nav {
     z-index: 1000;
 }
 
+/*ロゴ*/
 .logo {
     width: 150px;
     margin: 0 auto;
@@ -90,6 +93,8 @@ nav ul li a {
     display: block;
     padding: 10px 20px;
 }
+
+
 .cover-home {
     width: 100%;
     height: 100vh;
@@ -97,6 +102,7 @@ nav ul li a {
     overflow: hidden;
 }
 
+/*背景画像*/
 .background-image {
     position: absolute;
     top: 0;
@@ -116,6 +122,7 @@ nav ul li a {
     opacity: 0; /* フェードアウト状態 */
 }
 
+/*ページタイトル*/
 .page-title {
     font-size: 6rem;
     font-family: "Impact", sans-serif;
@@ -126,6 +133,8 @@ nav ul li a {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+/*フッター*/
 .copyright {
     background-color: #333333;
     text-align: center;
@@ -145,6 +154,8 @@ nav ul li a {
     padding: 50px 0;
     gap: 100px;
 }
+
+/*ボックス*/
 .box {
     width: 80%;
     max-width: 500px;
@@ -232,7 +243,7 @@ html {
     padding-top: 20px;  /* タイトル自体の上に内部余白を追加 */
 }
 
-
+/*ゲーム紹介ページ*/
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -370,7 +381,7 @@ html {
 }
 
 
-
+/*メディアクエリ*/
 @media screen and (max-width: 1130px) and (min-width: 769px) {
     .image-buttons {
       display: flex;
